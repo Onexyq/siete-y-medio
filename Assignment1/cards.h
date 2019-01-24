@@ -18,7 +18,7 @@ public:
 	bool operator<(Card Card2) const;
 
 private:
-	string suit;
+	int suit;
 	int rank;
 };
 
