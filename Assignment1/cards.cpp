@@ -2,6 +2,7 @@
 #include<cstdlib>
 #include<iostream>
 
+
 Card::Card()
 {
 	suit = 1 + rand() % 4;
@@ -18,8 +19,8 @@ string Card::get_suit() const
 		case 4:suit_name = "clubs"; break;
 		default:break;
 	}
-	
 	return suit_name;
+	
 }
 
 string Card::get_rank() const
@@ -41,7 +42,40 @@ string Card::get_rank() const
 	return rank_name;
 }
 
+
 bool Card::operator < (Card Card2) const 
 {
 	return rank < Card2.rank;
 }
+
+Hand::Hand()
+{
+}
+
+
+
+double Hand::get_total() const
+{
+	double total_value = 0;
+	for (int i = 0; i <= hand.size(); i++)
+	{
+		if (1 <= hand[i].get_rank <= 7)
+			total_value += hand[i].get_rank;
+		else
+			total_value += 0.5;
+	}
+	return total_value;
+}
+
+void Hand::draw_card()
+{
+	Card new_card;
+	hand.push_back(new_card);
+}
+
+
+Player::Player(int m)
+{
+	money = m;
+}
+

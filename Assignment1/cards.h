@@ -26,8 +26,8 @@ class Hand
 {
 public:
 	Hand();
-	double get_sum() const;
-	double draw_card() const;
+	double get_total() const;
+	void draw_card();
 
 private:
 	vector<Card>hand;
