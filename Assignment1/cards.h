@@ -15,6 +15,8 @@ public:
 	string get_suit() const;
 	string get_rank() const;
 
+	int get_rankNumber() const;
+
 	bool operator<(Card Card2) const;
 
 private:
@@ -26,8 +28,8 @@ class Hand
 {
 public:
 	Hand();
-	double get_total() const;
-	void draw_card();
+	double get_total();
+	void draw_card(Card new_card);
 
 private:
 	vector<Card>hand;
@@ -37,6 +39,8 @@ class Player
 {
 public:
 	Player(int m);
+	int get_money() const;
+	void add_money(int n);
 
 private:
 	int money;

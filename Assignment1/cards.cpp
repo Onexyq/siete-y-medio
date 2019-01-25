@@ -42,6 +42,10 @@ string Card::get_rank() const
 	return rank_name;
 }
 
+int Card::get_rankNumber() const
+{
+	return rank;
+}
 
 bool Card::operator < (Card Card2) const 
 {
@@ -54,22 +58,21 @@ Hand::Hand()
 
 
 
-double Hand::get_total() const
+double Hand::get_total()
 {
 	double total_value = 0;
-	for (int i = 0; i <= hand.size(); i++)
+	for (int i = 0; i != hand.size(); i++)
 	{
-		if (1 <= hand[i].get_rank <= 7)
-			total_value += hand[i].get_rank;
+		if ((1 <= hand[i].get_rankNumber())&& (hand[i].get_rankNumber() <= 7))
+			total_value += hand[i].get_rankNumber();
 		else
 			total_value += 0.5;
 	}
 	return total_value;
 }
 
-void Hand::draw_card()
+void Hand::draw_card(Card new_card)
 {
-	Card new_card;
 	hand.push_back(new_card);
 }
 
@@ -79,3 +82,12 @@ Player::Player(int m)
 	money = m;
 }
 
+int Player::get_money() const
+{
+	return money;
+}
+
+void Player::add_money(int n)
+{
+	money += n;
+}
