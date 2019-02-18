@@ -26,11 +26,18 @@ int main()
 
 		cout << "----------------------------------------------" << endl;
 		cout << "Game round: " << round << endl;
-		cout << "You have " << player.get_money() << " $ \t"
-			<< "\tEnter bet:";
-
+		
 		int bet;
-		cin >> bet;
+		
+		do{
+			cout << "You have " << player.get_money() << " $ \t"
+				<< "\tEnter bet:";
+			cin >> bet;
+			
+			if (bet > player.get_money()) {
+				cout << "You do not have enough money." << endl;
+			}
+		}while (bet > player.get_money());
 		
 		do {
 			Card new_card1;
@@ -108,6 +115,12 @@ int main()
 			}
 		}
 		delete p_hand; delete d_hand;
+
+		if (player.get_money() <= 0);
+		{
+			cout << "\nGame Over! " << endl;
+			break;
+		}
 		round += 1;
 		cout << "Continue<y/n>?";
 		cin >> answer;
