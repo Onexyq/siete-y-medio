@@ -24,7 +24,7 @@ int main()
 		Hand *p_hand = new Hand;
 		Hand *d_hand = new Hand;
 
-
+		cout << "----------------------------------------------" << endl;
 		cout << "Game round: " << round << endl;
 		cout << "You have " << player.get_money() << " $ \t"
 			<< "\tEnter bet:";
@@ -86,20 +86,20 @@ int main()
 				player.add_money(bet);
 				cout << " You win " << bet << "$ " << endl;
 			}
-			if ((d_hand->get_total() >= 5.5) && (d_hand->get_total() > p_hand->get_total()))
+			else if ((d_hand->get_total() >= 5.5) && (d_hand->get_total() > p_hand->get_total()))
 			{
 				cout << "\nNow your total is " << p_hand->get_total() << "!\n";
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
 				player.reduce_money(bet);
 				cout << " You lose " << bet << "$ " << endl;
 			}
-			if ((d_hand->get_total() >= 5.5) && (d_hand->get_total() == p_hand->get_total()))
+			else if ((d_hand->get_total() >= 5.5) && (d_hand->get_total() == p_hand->get_total()))
 			{
 				cout << "\nNow your total is " << p_hand->get_total() << "!\n";
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
 				cout << "Tie!" << endl;
 			}
-			if ((d_hand->get_total() >= 5.5) && (d_hand->get_total() < p_hand->get_total()))
+			else if ((d_hand->get_total() >= 5.5) && (d_hand->get_total() < p_hand->get_total()))
 			{
 				cout << "\nNow your total is " << p_hand->get_total() << "!\n";
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
@@ -111,7 +111,7 @@ int main()
 		round += 1;
 		cout << "Continue<y/n>?";
 		cin >> answer;
-
+		cout << endl;
 	} while (answer == 'y');
 
 	system("pause");
