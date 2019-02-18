@@ -91,3 +91,8 @@ void Player::add_money(int n)
 {
 	money += n;
 }
+
+void Player::reduce_money(int n)
+{
+	money -= n;
+}

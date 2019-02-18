@@ -41,6 +41,7 @@ public:
 	Player(int m);
 	int get_money() const;
 	void add_money(int n);
+	void reduce_money(int n);
 
 private:
 	int money;
