@@ -38,6 +38,7 @@ private:
 class Player
 {
 public:
+	Player() {};
 	Player(int m);
 	int get_money() const;
 	void add_money(int n);

@@ -6,7 +6,7 @@
 int main()
 {
 	Player player(100);
-	Player dealer(100);
+	Player dealer;
 	
 	Hand p_hand;
 	Hand d_hand;
