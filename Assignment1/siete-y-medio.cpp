@@ -1,4 +1,3 @@
-//This experimental branch adds more features
 
 #include"cards.h"
 #include<iostream>
@@ -14,8 +13,8 @@ int main()
 	Player player(100);
 	Player dealer;
 
-	int round = 1;   //same as game number
-	int i = 0;		//index of the player's cards
+	int round = 1;  
+	int i = 0;		
 
 	cout << "Game start!" << endl;
 	time(&t1);
