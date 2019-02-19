@@ -1,0 +1,63 @@
+Game start!
+----------------------------------------------
+Game round: 1
+You have 100 $          Enter bet:20
+
+New card:       King of golds
+dealer's new card:      Jack of swords
+Do you want another cards (y/n)? y
+
+New card:       Queen of golds
+dealer's new card:      Six of golds
+Do you want another cards (y/n)? y
+
+New card:       Queen of swords
+Do you want another cards (y/n)? y
+
+New card:       One of golds
+Do you want another cards (y/n)? y
+
+New card:       Six of clubs
+
+Now your total is 8.5!
+The dealer's total is 6.5!
+ You lose 20$
+Continue<y/n>?y
+
+----------------------------------------------
+Game round: 2
+You have 80 $           Enter bet:15
+
+New card:       Jack of clubs
+dealer's new card:      Three of clubs
+Do you want another cards (y/n)? y
+
+New card:       Five of clubs
+dealer's new card:      Seven of swords
+
+Now your total is 5.5!
+The dealer's total is 10!
+ You win 15$
+Continue<y/n>?y
+
+----------------------------------------------
+Game round: 3
+You have 95 $           Enter bet:95
+
+New card:       Five of cups
+dealer's new card:      Four of clubs
+Do you want another cards (y/n)? y
+
+New card:       One of clubs
+dealer's new card:      One of golds
+Do you want another cards (y/n)? y
+
+New card:       Six of swords
+dealer's new card:      King of swords
+
+Now your total is 12!
+The dealer's total is 5.5!
+ You lose 95$
+
+Game Over!
+You played 37 seconds.
