@@ -9,6 +9,9 @@ int main()
 {
 	srand(time(0));
 
+	time_t t1, t2;
+
+	
 	Player player(100);
 	Player dealer;
 
@@ -16,17 +19,19 @@ int main()
 	int i = 0;		//index of the player's cards
 
 	cout << "Game start!" << endl;
+	time(&t1);
 
 	char answer;
 	char choice;
-
 	do {
 		Hand *p_hand = new Hand;
 		Hand *d_hand = new Hand;
 
 		cout << "----------------------------------------------" << endl;
 		cout << "Game round: " << round << endl;
-		
+		cout << "You have " << player.get_money() << " $ \t"
+			<< "\tEnter bet:";
+
 		int bet;
 		
 		do{
