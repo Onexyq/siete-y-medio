@@ -31,6 +31,7 @@ public:
 	Hand();
 	double get_total();
 	void draw_card(Card new_card);
+	~Hand() {}
 
 private:
 	vector<Card>hand;

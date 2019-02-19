@@ -11,7 +11,6 @@ int main()
 
 	time_t t1, t2;
 
-	
 	Player player(100);
 	Player dealer;
 
@@ -22,18 +21,17 @@ int main()
 	time(&t1);
 
 	char answer;
-	char choice;
+	
 	do {
 		Hand *p_hand = new Hand;
 		Hand *d_hand = new Hand;
 
+		bool game_over = false;
 		cout << "----------------------------------------------" << endl;
 		cout << "Game round: " << round << endl;
-		cout << "You have " << player.get_money() << " $ \t"
-			<< "\tEnter bet:";
-
 		int bet;
-		
+		char choice = 'y';
+
 		do{
 			cout << "You have " << player.get_money() << " $ \t"
 				<< "\tEnter bet:";
@@ -59,7 +57,8 @@ int main()
 			{
 				cout << "\nNow your total is " << p_hand->get_total() << "!\n";
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
-				cout << "Tie!" << endl;
+				cout << "Tie!" << endl; 
+				game_over = true;
 				break;
 			}
 			else if ((p_hand->get_total() > 7.5) && (d_hand->get_total() <= 7.5))
@@ -68,6 +67,7 @@ int main()
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
 				player.reduce_money(bet); 
 				cout << " You lose " << bet << "$ " << endl;
+				game_over = true;
 				break;
 			}
 			else if ((p_hand->get_total() <= 7.5) && (d_hand->get_total() > 7.5))
@@ -76,15 +76,67 @@ int main()
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
 				player.add_money(bet);
 				cout << " You win " << bet << "$ " << endl;
+				game_over = true;
 				break;
 			}
 
 			cout << "Do you want another cards (y/n)? ";
 			cin >> choice;
 
-		} while (choice != 'n');
+		} while ((choice != 'n') && (d_hand->get_total() < 5.5));
 
-		while ((choice == 'n') && (d_hand->get_total() < 5.5))
+		while ((game_over != true) && (choice != 'n') && (d_hand->get_total() >= 5.5))
+		{
+			Card new_card1;
+			cout << "\nNew card: \t" << new_card1.get_rank()
+				<< " of " << new_card1.get_suit() << endl;
+			p_hand->draw_card(new_card1);
+
+			if (p_hand->get_total() > 7.5)
+			{
+				cout << "\nNow your total is " << p_hand->get_total() << "!\n";
+				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
+				player.reduce_money(bet);
+				cout << " You lose " << bet << "$ " << endl;
+				game_over = true;
+				break;
+			}
+			cout << "Do you want another cards (y/n)? ";
+			cin >> choice;
+		}
+
+		while ((game_over != true) && (choice == 'n') && (d_hand->get_total() >= 5.5))
+		{
+			if (d_hand->get_total() > p_hand->get_total())
+			{
+				cout << "\nNow your total is " << p_hand->get_total() << "!\n";
+				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
+				player.reduce_money(bet);
+				cout << " You lose " << bet << "$ " << endl;
+				game_over = true;
+				break;
+			}
+			else if (d_hand->get_total() == p_hand->get_total())
+			{
+				cout << "\nNow your total is " << p_hand->get_total() << "!\n";
+				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
+				cout << "Tie!" << endl;
+				game_over = true;
+				break;
+			}
+			else if (d_hand->get_total() < p_hand->get_total())
+			{
+				cout << "\nNow your total is " << p_hand->get_total() << "!\n";
+				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
+				player.add_money(bet);
+				cout << " You win " << bet << "$ " << endl;
+				game_over = true;
+				break;
+			}
+
+		}
+
+		while ((game_over != true) && (choice == 'n') && (d_hand->get_total() < 5.5))
 		{
 			Card new_card2;
 			cout << "dealer's new card: \t" << new_card2.get_rank()
@@ -97,6 +149,8 @@ int main()
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
 				player.add_money(bet);
 				cout << " You win " << bet << "$ " << endl;
+				game_over = true;
+				break;
 			}
 			else if ((d_hand->get_total() >= 5.5) && (d_hand->get_total() > p_hand->get_total()))
 			{
@@ -104,12 +158,16 @@ int main()
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
 				player.reduce_money(bet);
 				cout << " You lose " << bet << "$ " << endl;
+				game_over = true;
+				break;
 			}
 			else if ((d_hand->get_total() >= 5.5) && (d_hand->get_total() == p_hand->get_total()))
 			{
 				cout << "\nNow your total is " << p_hand->get_total() << "!\n";
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
 				cout << "Tie!" << endl;
+				game_over = true;
+				break;
 			}
 			else if ((d_hand->get_total() >= 5.5) && (d_hand->get_total() < p_hand->get_total()))
 			{
@@ -117,9 +175,11 @@ int main()
 				cout << "The dealer's total is " << d_hand->get_total() << "!\n";
 				player.add_money(bet);
 				cout << " You win " << bet << "$ " << endl;
+				game_over = true;
+				break;
 			}
 		}
-		delete p_hand; delete d_hand;
+		delete p_hand, d_hand;
 
 		if (player.get_money() <= 0)
 		{
@@ -131,6 +191,9 @@ int main()
 		cin >> answer;
 		cout << endl;
 	} while (answer == 'y');
+
+	time(&t2);
+	cout << "You played " << t2 - t1 << " seconds." << endl;
 
 	system("pause");
 	return 0;
