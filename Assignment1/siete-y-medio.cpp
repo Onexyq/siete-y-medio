@@ -5,6 +5,9 @@
 
 int main()
 {
+	time_t t1, t2;
+
+	
 	Player player(100);
 	Player dealer;
 	
@@ -15,13 +18,14 @@ int main()
 	int i = 0;		//index of the player's cards
 
 	cout << "Game start!" << endl;
-	
+	time(&t1);
+
 	char answer;
 	char choice;
 	do {
 		Hand *p_hand = new Hand;
 		Hand *d_hand = new Hand;
-
+		
 		cout << "----------------------------------------------" << endl;
 		cout << "Game round: " << round << endl;
 
@@ -31,7 +35,7 @@ int main()
 			cout << "You have " << player.get_money() << " $ \t"
 				<< "\tEnter bet:";
 			cin >> bet;
-
+			
 			if (bet > player.get_money()) {
 				cout << "You do not have enough money." << endl;
 			}
@@ -124,6 +128,9 @@ int main()
 		cin >> answer;
 		cout << endl;
 	} while (answer == 'y');
+
+	time(&t2);
+	cout << "You played " << t2 - t1 << " seconds. " << endl;
 
 	system("pause");
 	return 0;
