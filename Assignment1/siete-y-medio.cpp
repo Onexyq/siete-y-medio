@@ -7,16 +7,16 @@
 
 int main()
 {
+	srand(time(0));
+
 	Player player(100);
 	Player dealer;
-	
-	
 
 	int round = 1;   //same as game number
 	int i = 0;		//index of the player's cards
 
 	cout << "Game start!" << endl;
-	
+
 	char answer;
 	char choice;
 
@@ -116,7 +116,7 @@ int main()
 		}
 		delete p_hand; delete d_hand;
 
-		if (player.get_money() <= 0);
+		if (player.get_money() <= 0)
 		{
 			cout << "\nGame Over! " << endl;
 			break;
