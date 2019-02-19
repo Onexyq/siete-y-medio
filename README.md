@@ -2,6 +2,7 @@
 This is my PIC 10C assignment repo
 
 //The final complete version is under the experimental branch
+//Cards.h Cards.cpp siete-y-medio.cpp  are in the "Assignment1" folder
 
 //The Homework Discription //https://bitbucket.org/rikis-salazar/pic10c-winter19/src/05285730bafe17f11b50cb34ce34676a6535e436/assignments/hw1/
 
